@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Gesion Focus Player</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+<script type="text/javascript" src="GFPlayer.js"></script>
+<style type="text/css">
+* {padding:0;margin:0;font:12px Verdana;}
+img {border:0;}
+ol, ul {list-style:none;}
+
+center {width:709px;margin:0 auto;}
+center div {width:561px;float:left;}
+center a {color:green;text-decoration:none;font-size:24px;}
+center a:hover {color:red;}
+
+div#myFocus {width:709px;height:301px;background:url(images/bg.png) no-repeat;margin:10px auto 0 auto;overflow:hidden;}
+
+ul.GFPlayer {width:549px;height:289px;overflow:hidden;padding:6px 0 0 6px;}
+ul.GFPlayer li {width:549px; height:289px;overflow:hidden;}
+ul.GFPlayer li img {}
+
+ul.GFToggle {float:right;}
+ul.GFToggle li {width:145px;height:73px;margin:0 0 3px 0;}
+ul.GFToggle li.on {background:url(images/on.png) no-repeat;}
+ul.GFToggle li a {}
+ul.GFToggle li a img {width:127px;height:61px;margin:6px 0 0 12px;}
+
+ul.GFDetail {display:none;}
+
+div.GFLegend {color:white;line-height:20px;background:black;text-align:center;top:-20px;left:6px;position:relative;z-index:20;width:549px;}
+
+div.GFSlider {background:url(images/on.png) no-repeat;}
+</style>
+<script type="text/javascript">
+$(function () {
+	$("#myFocus").GFPlayer({
+		showPrev : 'a.prev',
+		showNext : 'a.next',
+		detailAlpha : .4
+	});
+});
+</script>
+</head>
+<body>
+<div id="myFocus">
+	<ul class="GFToggle">
+		<li><a href="http://www.onens.com/" target="_blank"><img src="images/s1.jpg" /></a></li>
+		<li><a href="http://www.onens.com/" target="_blank"><img src="images/s2.jpg" /></a></li>
+		<li><a href="http://www.onens.com/" target="_blank"><img src="images/s3.jpg" /></a></li>
+		<li><a href="http://www.onens.com/" target="_blank"><img src="images/s4.jpg" /></a></li>
+	</ul>
+	<ul class="GFPlayer">
+		<li><a href="http://www.onens.com/" target="_blank"><img src="images/ad1.jpg" /></a></li>
+		<li><a href="http://www.onens.com/" target="_blank"><img src="images/ad2.jpg" /></a></li>
+		<li><a href="http://www.onens.com/" target="_blank"><img src="images/ad3.jpg" /></a></li>
+		<li><a href="http://www.onens.com/" target="_blank"><img src="images/ad4.jpg" /></a></li>
+	</ul>
+	<ul class="GFDetail">
+		<li>图片说明一</li>
+		<li>图片说明二</li>
+		<li>图片说明三</li>
+		<li>图片说明四</li>
+	</ul>
+	<div class="GFLegend"></div>
+</div>
+<center>
+	<div>
+		<a href="http://www.onens.com/" class="prev">&laquo;</a>
+		<a href="http://www.onens.com/" title="One New Start">&middot;</a>
+		<a href="http://www.onens.com/" class="next">&raquo;</a>
+	</div>
+</center>
+</body>
+</html>
