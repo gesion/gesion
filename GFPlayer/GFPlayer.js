@@ -2,7 +2,7 @@
  * Gesion Focus Player
  * 
  * @version 1.0.0
- * @author 	gesion<gesion@163.com>
+ * @author 	gesion<v.wangensheng@snda.com>
  */
 (function ($) {
 	$.fn.GFPlayer = function (params) {
@@ -68,8 +68,6 @@
 			GFS.css({
 				top : _GFTO.top - _GFSO.top,
 				left : _GFTO.left - _GFSO.left,
-				width : _GFTI.width(),
-				height : _GFTI.height(),
 				position : 'relative',
 				'z-index' : 0
 			});
@@ -83,10 +81,10 @@
 			if (i < 0) i = LEN - 1;
 			if (GFI == i) return ;
 			
-			GFPI.eq(i).animate({opacity:1}, p.playerSpeed).css('z-index', 1);
+			GFPI.eq(i).stop().animate({opacity:1}, p.playerSpeed).css('z-index', 1);
 			GFTI.eq(i).addClass(p.linkStyle);
 			if (typeof GFI != 'undefined') {
-				GFPI.eq(GFI).animate({opacity:0}, p.playerSpeed).css('z-index', 0);
+				GFPI.eq(GFI).stop().animate({opacity:0}, p.playerSpeed).css('z-index', 0);
 				GFTI.eq(GFI).removeClass(p.linkStyle);
 			}
 			
@@ -96,11 +94,9 @@
 				var _GFTI = GFTI.eq(i);
 				var _GFSO = GFS.offset();
 				var _GFTO = _GFTI.offset();
-				GFS.animate({
+				GFS.stop().animate({
 					top : parseInt(GFS.css('top')) + _GFTO.top - _GFSO.top,
-					left : parseInt(GFS.css('left')) + _GFTO.left - _GFSO.left,
-					width : _GFTI.width(),
-					height : _GFTI.height()
+					left : parseInt(GFS.css('left')) + _GFTO.left - _GFSO.left
 				}, p.sliderSpeed);
 			}
 			
@@ -167,20 +163,20 @@
 			});
 		}
 		
-		if (!p.autoPlay) return ;
-		
-		GFPI.hover(function () {
-			clearGFP();
-		}, function () {
-			startGFP();
-		});
-		
 		GFTI.hover(function () {
 			clearGFP();
 			i = GFTI.index(this);
 			TID = setTimeout(function () {
 				GFPlayer(i);
 			}, p.sliderTimer);
+		}, function () {
+			startGFP();
+		});
+		
+		if (!p.autoPlay) return ;
+		
+		GFPI.hover(function () {
+			clearGFP();
 		}, function () {
 			startGFP();
 		});
